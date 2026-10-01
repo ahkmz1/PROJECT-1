@@ -92,4 +92,28 @@ int main()
     subtotal = baseFare + (distanceKm * ratePerKm);
     double fareAfterSurge = subtotal * surgeMultiplier;
     finalFare = fareAfterSurge - discountAmount;
+
+    if (finalFare < 0.0) {
+        finalFare = 0.0;
+    }
+
+    cout << "\n===================================================\n";
+    cout << "                BOOKING RECEIPT                    \n";
+    cout << "===================================================\n";
+    cout << fixed << setprecision(2);
+    cout << " Service Category  : " << serviceName << "\n";
+    cout << " Trip Distance     : " << distanceKm << " km\n";
+    cout << " Base Rate         : RM " << baseFare << "\n";
+    cout << " Distance Charge   : RM " << (distanceKm * ratePerKm) << "\n";
+    cout << " Subtotal          : RM " << subtotal << "\n";
+    cout << " Peak Surge Factor : " << (surgeMultiplier > 1.0 ? "35% Surge Applied (1.35x)" : "Standard Rate (1.0x)") << "\n";
+    if (discountAmount > 0.0) {
+        cout << " Promo Discount    : -RM " << discountAmount << "\n";
+    }
+    cout << "---------------------------------------------------\n";
+    cout << " TOTAL ESTIMATED FARE : RM " << finalFare << "\n";
+    cout << "===================================================\n";
+    cout << " Thank you for using Grab! Have a safe journey.\n\n";
+
+    return 0;
 }
