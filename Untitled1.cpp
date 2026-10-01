@@ -57,4 +57,39 @@ int main()
             cout << "\n[ERROR] Invalid service option selected. Program exiting.\n";
             return 1;
     }
+
+    cout << "\nEnter estimated trip distance (in km): ";
+    cin >> distanceKm;
+
+    if (distanceKm <= 0.0) {
+        cout << "\n[ERROR] Distance must be greater than 0 km. Program exiting.\n";
+        return 1;
+    }
+
+    cout << "Is this trip during peak hours? (y/n): ";
+    cin >> peakHourInput;
+
+    if (peakHourInput == 'y' || peakHourInput == 'Y') {
+        surgeMultiplier = 1.35;
+    } else if (peakHourInput == 'n' || peakHourInput == 'N') {
+        surgeMultiplier = 1.00;
+    } else {
+        cout << "\n[NOTICE] Unrecognized peak hour response. Defaulting to standard rates.\n";
+        surgeMultiplier = 1.00;
+    }
+
+    cout << "Enter Promo Code (type 'STUDENT', 'GRAB50', or 'NONE'): ";
+    cin >> promoCode;
+
+    if (promoCode == "GRAB50" || promoCode == "grab50") {
+        discountAmount = 3.00;
+    } else if (promoCode == "STUDENT" || promoCode == "student") {
+        discountAmount = 2.00;
+    } else {
+        discountAmount = 0.00;
+    }
+
+    subtotal = baseFare + (distanceKm * ratePerKm);
+    double fareAfterSurge = subtotal * surgeMultiplier;
+    finalFare = fareAfterSurge - discountAmount;
 }
