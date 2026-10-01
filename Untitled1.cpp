@@ -31,4 +31,30 @@ int main()
     cout << "  4. GrabExpress Parcel(Base: RM 4.00, RM 1.50/km)\n";
     cout << "Enter service option (1-4): ";
     cin >> serviceChoice;
+
+    switch (serviceChoice) {
+        case 1:
+            serviceName = "GrabBike / Budget";
+            baseFare = 2.00;
+            ratePerKm = 0.80;
+            break;
+        case 2:
+            serviceName = "GrabCar Standard";
+            baseFare = 3.00;
+            ratePerKm = 1.20;
+            break;
+        case 3:
+            serviceName = "GrabCar Premium / XL";
+            baseFare = 6.00;
+            ratePerKm = 2.00;
+            break;
+        case 4:
+            serviceName = "GrabExpress Delivery";
+            baseFare = 4.00;
+            ratePerKm = 1.50;
+            break;
+        default:
+            cout << "\n[ERROR] Invalid service option selected. Program exiting.\n";
+            return 1;
+    }
 }
